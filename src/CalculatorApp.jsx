@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import CalcualorButton from './component/calculator/CalculatorButton';
+import ScreenResult from './component/calculator/ScreenResult';
 
 const CalculatorApp = () => {
     const [result, setResult] = useState(0);
@@ -44,87 +46,28 @@ const CalculatorApp = () => {
     return (
         <div className='mx-auto  text-center text-2xl h-screen flex flex-col max-w-lg border bg-orange-50'>
             <h1 className='bg-orange-300 py-2 font-serif text-4xl'>Calculator</h1>
-            <div className='p-2 pr-10 border bg-white text-end h-40'>
-                <h1 className='text-7xl'>{screenResut.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
-                <h5>{subResult !== null ?subResult:null} <span className='text-md'>{operatorHandler}</span></h5>
-            </div>
+            <ScreenResult subResult={subResult} screenResut={screenResut} operatorHandler={operatorHandler} />
             <div className='flex h-full font-bold'>
                 <div className='grid grid-cols-3 text-2xl flex-1'>
-                    <button value={7} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>7
-                    </button>
-                    <button value={8} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>8
-                    </button>
-                    <button value={9} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>9
-                    </button>
-                    <button value={4} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>4
-                    </button>
-                    <button value={5} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>5
-                    </button>
-                    <button value={6} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>6
-                    </button>
-                    <button value={1} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>1
-                    </button>
-                    <button value={2} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>2
-                    </button>
-                    <button value={3} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>3
-                    </button>
-                    <button value={0} 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100 col-span-2'>0
-                    </button>
-                    <button value='.' 
-                        onClick={onHandle} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>.
-                    </button>
-                    <button
-                        value={operatorHandler}
-                        onClick={onResult} 
-                        className='col-span-3 hover:bg-orange-300 transition-all border border-orange-100'>=
-                    </button>
+                    <CalcualorButton value={7} onClick={onHandle} />
+                    <CalcualorButton value={8} onClick={onHandle} />
+                    <CalcualorButton value={9} onClick={onHandle} />
+                    <CalcualorButton value={4} onClick={onHandle} />
+                    <CalcualorButton value={5} onClick={onHandle} />
+                    <CalcualorButton value={6} onClick={onHandle} />
+                    <CalcualorButton value={1} onClick={onHandle} />
+                    <CalcualorButton value={2} onClick={onHandle} />
+                    <CalcualorButton value={3} onClick={onHandle} />
+                    <CalcualorButton colspan={2} value={0} onClick={onHandle} />
+                    <CalcualorButton value='.' onClick={onHandle} />
+                    <CalcualorButton btnValue={operatorHandler} colspan={3} value='=' onClick={onResult} />
                 </div>
                 <div className='grid w-20'>
-                    <button
-                        onClick={onClear} 
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>clear
-                    </button>
-                    <button 
-                        value='+'
-                        onClick={onResult}
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>+
-                    </button>
-                    <button 
-                        value='-'
-                        onClick={onResult}
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>-
-                    </button>
-                    <button 
-                        value='*'
-                        onClick={onResult}
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>*
-                    </button>
-                    <button 
-                        value='/'
-                        onClick={onResult}
-                        className='hover:bg-orange-300 transition-all border border-orange-100'>/
-                    </button>
+                    <CalcualorButton value='clear' onClick={onClear} />
+                    <CalcualorButton value='+' onClick={onResult} />
+                    <CalcualorButton value='-' onClick={onResult} />
+                    <CalcualorButton value='*' onClick={onResult} />
+                    <CalcualorButton value='/' onClick={onResult} />
                 </div>
             </div>
         </div>
